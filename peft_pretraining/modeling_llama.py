@@ -269,7 +269,7 @@ class LlamaDecoderLayer(nn.Module):
         
         scale_attn_weights = False
         scale_mlp_output = False
-        self.max_post_norm_layer = 8
+        self.max_post_norm_layer = 12
 
         if norm_type == 'scale_post_pre':
             if self.layer_index < self.max_post_norm_layer:
@@ -303,7 +303,7 @@ class LlamaDecoderLayer(nn.Module):
             self.post_feedforward_layernorm = LlamaRMSNorm(config.hidden_size, eps=config.rms_norm_eps)
         elif norm_type == 'pre_post':
             print("cur layer index is:", layer_index)
-            self.max_pre_norm_layer = 12
+            self.max_pre_norm_layer = 11
             if self.layer_index < self.max_pre_norm_layer:
                 self.input_layernorm = LlamaRMSNorm(config.hidden_size, eps=config.rms_norm_eps)
                 self.post_attention_layernorm = LlamaRMSNorm(config.hidden_size, eps=config.rms_norm_eps)
@@ -312,7 +312,7 @@ class LlamaDecoderLayer(nn.Module):
                 self.post_attention_layernorm = LlamaRMSNorm(config.hidden_size, eps=config.rms_norm_eps)
         elif norm_type == 'pre_sandwich':
             print("cur layer index is:", layer_index)
-            self.max_pre_norm_layer = 12
+            self.max_pre_norm_layer = 11
             if self.layer_index < self.max_pre_norm_layer:
                 self.input_layernorm = LlamaRMSNorm(config.hidden_size, eps=config.rms_norm_eps)
                 self.post_attention_layernorm = LlamaRMSNorm(config.hidden_size, eps=config.rms_norm_eps)
