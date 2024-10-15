@@ -11,4 +11,4 @@
 source /home/sliu/anaconda3/etc/profile.d/conda.sh
 source activate galore_3.11
 
-bash run_1b.sh post_pre 5e-4 0.5
+bash run_1b.sh pre 5e-4
