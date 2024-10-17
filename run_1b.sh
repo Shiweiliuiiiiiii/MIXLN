@@ -2,7 +2,7 @@
 norm_type=$1
 learning_rates=$2
 # Set the CUDA devices and other general parameters
-export CUDA_VISIBLE_DEVICES=0,1
+export CUDA_VISIBLE_DEVICES=2,3
 export HF_DATASETS_OFFLINE=0
 export NORM_TYPE=$norm_type
 
@@ -10,7 +10,7 @@ export NORM_TYPE=$norm_type
 
 echo "Training with learning rate: $learning_rates, norm type: $norm_type on GPU $gpu"
 
-CUDA_VISIBLE_DEVICES=0,1 torchrun --nproc_per_node 2 --master_port=23456 torchrun_main.py \
+CUDA_VISIBLE_DEVICES=2,3 torchrun --nproc_per_node 2 --master_port=23456 torchrun_main.py \
     --model_config configs/llama_1b.json \
     --lr $learning_rates \
     --batch_size 64 \
@@ -22,5 +22,5 @@ CUDA_VISIBLE_DEVICES=0,1 torchrun --nproc_per_node 2 --master_port=23456 torchru
     --eval_every 1000 \
     --optimizer adam \
     --grad_clipping 0.0 \
-    --run_name "1b_res_${norm_type}_lr${learning_rates}_4layer_of_post" \
-    --save_dir "1b_res_${norm_type}_lr${learning_rates}_4layer_of_post"
+    --run_name "1b_res_${norm_type}_lr${learning_rates}" \
+    --save_dir "1b_res_${norm_type}_lr${learning_rates}"
