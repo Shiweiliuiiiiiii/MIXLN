@@ -22,5 +22,5 @@ CUDA_VISIBLE_DEVICES=2,3 torchrun --nproc_per_node 2 --master_port=29500 torchru
     --eval_every 1000 \
     --optimizer adam \
     --grad_clipping 0.0 \
-    --run_name "1b_res_${norm_type}_lr${learning_rates}" \
+    --run_name "1b_res_${norm_type}_lr${learning_rates}_1_3" \
     --save_dir "1b_res_${norm_type}_lr${learning_rates}"
