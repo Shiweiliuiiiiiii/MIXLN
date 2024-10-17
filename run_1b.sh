@@ -5,7 +5,8 @@ learning_rates=$2
 export CUDA_VISIBLE_DEVICES=0,1
 export HF_DATASETS_OFFLINE=0
 export NORM_TYPE=$norm_type
-export MASTER_PORT=12355
+export MASTER_ADDR=localhost
+export MASTER_PORT=23456
 
 # Function to run a single training task
 
