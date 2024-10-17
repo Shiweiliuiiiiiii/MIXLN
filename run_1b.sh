@@ -5,14 +5,12 @@ learning_rates=$2
 export CUDA_VISIBLE_DEVICES=0,1
 export HF_DATASETS_OFFLINE=0
 export NORM_TYPE=$norm_type
-export MASTER_ADDR=localhost
-export MASTER_PORT=23456
 
 # Function to run a single training task
 
 echo "Training with learning rate: $learning_rates, norm type: $norm_type on GPU $gpu"
 
-CUDA_VISIBLE_DEVICES=0,1 torchrun --nproc_per_node 2 --master_port=29500 torchrun_main.py \
+CUDA_VISIBLE_DEVICES=0,1 torchrun --nproc_per_node 2 --master_port=23456 torchrun_main.py \
     --model_config configs/llama_1b.json \
     --lr $learning_rates \
     --batch_size 64 \
