@@ -10,7 +10,7 @@ export NORM_TYPE=$norm_type
 
 echo "Training with learning rate: $learning_rates, norm type: $norm_type on GPU $gpu"
 
-CUDA_VISIBLE_DEVICES=2,3 torchrun --nproc_per_node 2 --master_port=23456 torchrun_main.py \
+CUDA_VISIBLE_DEVICES=2,3 torchrun --nproc_per_node 2 --master_port=55556 torchrun_main.py \
     --model_config configs/llama_1b.json \
     --lr $learning_rates \
     --batch_size 64 \
