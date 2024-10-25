@@ -8,7 +8,7 @@ master_port=$4
 
 echo "Training with learning rate: $learning_rates, norm type: $norm_type on GPU $gpu"
 
-CUDA_VISIBLE_DEVICES=2.3 torchrun --nproc_per_node 2 --master_port=$master_port torchrun_main.py \
+CUDA_VISIBLE_DEVICES=0,1 torchrun --nproc_per_node 2 --master_port=$master_port torchrun_main.py \
     --model_config configs/llama_1b.json \
     --lr $learning_rates \
     --batch_size 64 \
